@@ -19,33 +19,66 @@ namespace P3_4
         {
             root = null;
         }
-        public DTreeNode Insert_DNode(DTreeNode root, int k)
+        public static DTreeNode Insert_DNode(DTreeNode root, int k, int a)
         {
             if (root == null)
-            {//создание корня дерева
-                root = new DTreeNode(' ', k, null, null);
-            }
-            else //дерево не пусто - продолжить поиск элемента с ключом
             {
-                if (k < root.Key) //поиск в левом поддереве
-                    root.Left = Insert_DNode(root.Left, k);
-                else if (k > root.Key)//поиск в правом поддереве
-                    root.Right = Insert_DNode(root.Right, k);
-                else //ключ дб уникальным
+                return new DTreeNode(k, a);
+            }
+            else
+            {
+                if (k < root.Key)
+                    root.Left = Insert_DNode(root.Left, k, a);
+                else if (k > root.Key)
+                    root.Right = Insert_DNode(root.Right, k, a);
+                else
                     Console.WriteLine($"узел с ключом {k} уже есть в дереве");
             }
             return root;
         }
-        
-        public static void GetTreeData(DTreeNode root)
-        {
-            if (root != null)
-            {
-                Console.WriteLine(root.Key);
-                GetTreeData(root.Left);
-                GetTreeData(root.Right);
-            }
-        }
 
+        public static int Sum(DTreeNode node)
+        {
+            if (node == null)
+                return 0;
+            return node.Key + Sum(node.Left) + Sum(node.Right);//сумма ключа текущего узла
+        }
+        public static int CountInternalNodes(DTreeNode node)
+        {
+            if (node == null)
+                return 0;
+            else if (node.Left == null && node.Right == null)
+                return 0;
+            else
+                return 1 + CountInternalNodes(node.Left) + CountInternalNodes(node.Right);
+
+        }
+        public static List<int> GetNegativeValues(DTreeNode node)
+        {
+
+            List<int> result = new List<int>(); // создаем пустой список для хранения отрицательных значений
+
+            if (node == null)
+                return result;
+
+
+            if (node.Key < 0) // если значение информационного поля отрицательное, добавляем его в список
+            {
+                result.Add(node.Key);
+                Console.WriteLine($"Узел: {node.Info}, Отрицательное: {result.Count}: {node.Key} ");
+
+            }
+            else
+            {
+                Console.WriteLine($"Узел: {node.Info}, Отрицательное: {result.Count}: {node.Key} ");
+
+            }
+            // обходим левое и правое поддеревья и добавляем в список все отрицательные значения
+
+            result.AddRange(GetNegativeValues(node.Left));
+            result.AddRange(GetNegativeValues(node.Right));
+
+            return result;
+        }
     }
 }
