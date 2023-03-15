@@ -53,16 +53,16 @@ namespace P3_4
                 return 1 + CountInternalNodes(node.Left) + CountInternalNodes(node.Right);
 
         }
-        public static List<int> GetNegativeValues(DTreeNode node)
+        public static List<int> GetNegativeValues(DTreeNode node)//Поиск отрицательных значений
         {
 
-            List<int> result = new List<int>(); // создаем пустой список для хранения отрицательных значений
+            List<int> result = new List<int>();
 
             if (node == null)
                 return result;
 
 
-            if (node.Key < 0) // если значение информационного поля отрицательное, добавляем его в список
+            if (node.Key < 0) // Проверка отрицательности
             {
                 result.Add(node.Key);
                 Console.WriteLine($"Узел: {node.Info}, Отрицательное: {result.Count}: {node.Key} ");
@@ -73,7 +73,6 @@ namespace P3_4
                 Console.WriteLine($"Узел: {node.Info}, Отрицательное: {result.Count}: {node.Key} ");
 
             }
-            // обходим левое и правое поддеревья и добавляем в список все отрицательные значения
 
             result.AddRange(GetNegativeValues(node.Left));
             result.AddRange(GetNegativeValues(node.Right));

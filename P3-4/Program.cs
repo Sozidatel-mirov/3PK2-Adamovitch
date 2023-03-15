@@ -20,6 +20,7 @@ Console.WriteLine();
 //Задание 3 
 List<int> negativeValues = DixotomyTree.GetNegativeValues(root);
 Console.WriteLine($"Отрицательные значения информационных полей дерева: {negativeValues.Count}");
+Console.WriteLine();
 
 foreach (var value in negativeValues)
 {
