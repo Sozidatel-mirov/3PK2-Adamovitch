@@ -5,7 +5,7 @@ DTreeNode root = null;
 //Задание 1
 for (int i = 0; i < 10; i++)
 {
-    int key = random.Next(-1000, 1001);
+    int key = random.Next(-100, 1000);
     root = DixotomyTree.Insert_DNode(root, 1+i, key);
 
 }
@@ -26,3 +26,6 @@ foreach (var value in negativeValues)
 {
     Console.Write($"{value}, ");
 }
+Console.WriteLine(); Console.WriteLine();
+
+
