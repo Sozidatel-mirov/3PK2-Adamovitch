@@ -13,9 +13,9 @@ namespace P3_7
         public string Animal { get; set; }
         public override double GetDiscount(Client client)
         {
-            if (client.AllPurshares > 1000 && client.AllPurshares < 5000) return Price * 0.85;
+            if (client.AllPurshares > 1000 && client.AllPurshares < 5000) return Price * 0.75;
             else if (client.AllPurshares < 1000) return Price;
-            else return Price * 0.65;
+            else return Price * 0.55;
         }
         public override string ToString()
         {
