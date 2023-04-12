@@ -28,7 +28,7 @@ namespace P3_8
                     ((dynamic)contact).adress = p;
                     break;
                 default:
-                    throw new ArgumentException($"Unknown contact type '{cont}'");
+                    throw new ArgumentException($"Неизвестный контакт {cont}");
             }
 
             contacts.Add(contact);
